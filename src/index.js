@@ -8,6 +8,6 @@ const App = () => {
 			<Input />
 		</div>
 	);
-}
+};
 
 ReactDOM.render(<App />, document.querySelector(".container"));
