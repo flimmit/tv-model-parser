@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ContentSamsung, technologyArray, locationArray, 
-		modelArray, Aaa } from "./samsung";
+import { ContentSamsung } from './content';
+import { functions } from './functions';
 
 class Input extends Component { 
 
@@ -8,7 +8,7 @@ class Input extends Component {
 		super(props);
 		
 		this.handleChangeInSelect = this.handleChangeInSelect.bind(this);
-		this.state = { input: '', value: '', typ: "" };
+		this.state = { input: '', value: '', typ: '' };
 	}
 
 	handleChangeInSelect(event) {
@@ -18,12 +18,13 @@ class Input extends Component {
 	render() {
 		const isInputCorrect = this.state.input;
 		const samsungRegex = /^[QUPLHKquplhk]{1}[NEAnea]{1}[0-9]{2}[A-FQMLKHFa-fqmlkhf]{1}([USus]{1})?[0-9]{4}[a-zA-Z]{1}[a-zA-Z]{3}$/g;
-		let regex = "";
-		if (this.state.typ === "lg") {
+		const lgNonOled = /^[0-9]{2}[SUELPsuelp]{1}[JHFGBCNAWMSVjhfgbcnawmsv]{1}[0-9]{1}[0-9]{1}[0-9]{1}[TCUSVBtcusvb0]{1}$/g;
+		let regex = '';
+		if (this.state.typ === 'lg') {
 			regex = samsungRegex;
-		} else if (this.state.typ === "samsung") {
+		} else if (this.state.typ === 'samsung') {
 			regex = samsungRegex;
-		} else if (this.state.typ === "panasonic") {
+		} else if (this.state.typ === 'panasonic') {
 			regex = samsungRegex;
 		} else {
 			regex = samsungRegex;
@@ -35,49 +36,17 @@ class Input extends Component {
 			const arr = Array.from(input);
 			// console.log(props.data.data);
 
-			<Aaa values={[techValue, locValue, modelValue, inches, serie, feature, info]} />
-
-			var inches = arr[2] + arr[3],
-				serie = arr[5] + arr[6] + arr[7] + arr[8],
-				feature = arr[9],
-				info = arr[10] + arr[11] + arr[12];
-
-			if (isNaN(arr[5])) {
-				var serie = arr[6] + arr[7] + arr[8] + arr[9],
-					feature = arr[10],
-					info = arr[11] + arr[12] + arr[13],
-					model = arr[4] + arr[5];
-			} else {
-				var model = arr[4];
-			}
-
-			if (arr[0] in technologyArray) {
-				for (let i = Object.keys(technologyArray).length - 1; i >= 0; i--) {
-					if (Object.keys(technologyArray)[i] === arr[0]) {
-						var techValue = Object.values(technologyArray)[i];
-					}
-				}
-			}
-
-			if (arr[1] in locationArray) {
-				for (let i = Object.keys(locationArray).length - 1; i >= 0; i--) {
-					if(Object.keys(locationArray)[i] === arr[1]) {
-						var locValue = Object.values(locationArray)[i];
-					}
-				}
-			}
-
-			if (model in modelArray) {
-				for (let i = Object.keys(modelArray).length - 1; i >= 0; i--) {
-					if (Object.keys(modelArray)[i] === model) {
-						var modelValue = Object.values(modelArray)[i];
-					}
-				}
-			}
+			var inches = 	functions(arr).inches,
+				feature = 	functions(arr).feature,
+				info = 		functions(arr).info,
+				serie = 	functions(arr).serie,
+				techValue = functions(arr).techValue,
+				locValue = 	functions(arr).locValue,
+				modelValue = functions(arr).modelValue;
 
 			return (
 				<ContentSamsung 
-					values={[techValue, locValue, modelValue, inches, serie, feature, info]}
+					values={[techValue, locValue, inches, modelValue, serie, feature, info]}
 				/>
 			);
 		}
