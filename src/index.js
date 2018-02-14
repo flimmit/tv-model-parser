@@ -4,9 +4,7 @@ import Input from './../components/input';
 
 const App = () => {
 	return (
-		<div>
-			<Input />
-		</div>
+		<Input />
 	);
 };
 

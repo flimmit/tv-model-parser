@@ -9,7 +9,7 @@ export default { 
 				L:'LCD',
 				H:'DLP',
 				K:'OLED'
-			}		
+			}	
 		},
 		{
 			label: 'Location',
@@ -24,7 +24,7 @@ export default { 
 			values: null			
 		},
 		{
-			label: 'Model',
+			label: 'Year',
 			values: {
 				A:'2008',
 				B:'2009',
@@ -64,7 +64,7 @@ export default { 
 				HP:'Plasma',
 				HL:'DLP',
 				TX:'CRT'
-			}		
+			}
 		},
 		{
 			label: 'Year',
@@ -75,7 +75,7 @@ export default { 
 				'P':'2004',
 				'N':'2003',
 				'M':'2002'
-			}		
+			}
 		},
 		{
 			label: 'Inches',
@@ -100,7 +100,7 @@ export default { 
 	], 
 	panasonic: [
 		{
-			label: 'TV',
+			label: 'Type',
 			values: null
 		},
 		{
@@ -134,7 +134,7 @@ export default { 
 			values: null
 		},
 		{
-			label: 'Country',
+			label: 'Location',
 			values: {
 				B:'United Kingdom or Brazil',
 				U:'USA',
@@ -146,7 +146,7 @@ export default { 
 	], 
 	sony: [
 		{
-			label: 'TV',
+			label: 'Type',
 			values: null
 		},
 		{
@@ -226,7 +226,7 @@ export default { 
 			}	
 		}
 	], 
-	lgOLED: [
+	lgOled: [
 		{
 			label: 'Technology',
 			values: null
@@ -261,7 +261,7 @@ export default { 
 			}
 		}
 	], 
-	lgNonOLED: [
+	lgNonOled: [
 		{
 			label: 'Inches',
 			values: null
@@ -294,7 +294,7 @@ export default { 
 			}	
 		},
 		{
-			label: 'Series',
+			label: 'Serie',
 			values: null
 		},
 		{

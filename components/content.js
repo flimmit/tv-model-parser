@@ -1,8 +1,5 @@
 import React from 'react';
-
-
 import DB from './db.js';
-
 
 const getVendorInformations = (sVendor, arrValues = []) => {
 
@@ -13,42 +10,39 @@ const getVendorInformations = (sVendor, arrValues = []) => {
 
 		let v = arrValues[key];
 
-		if(DB[sVendor][key] && DB[sVendor][key]['values']) {	
+		try {
+			if(DB[sVendor][key] && DB[sVendor][key]['values']) {	
 
-			resultObj[DB[sVendor][key]['label']] = DB[sVendor][key]['values'][v];
+				resultObj[DB[sVendor][key]['label']] = DB[sVendor][key]['values'][v];
 
-		} else {
-			resultObj[DB[sVendor][key]['label']] = v;
+			} else {
+				resultObj[DB[sVendor][key]['label']] = v;
+			}
+		} catch(error) {
+				console.log(error);
 		}
 	}
 	return resultObj;
 };
 
-const Item = (props) => {
-	var r = getVendorInformations(props.result.vendor, props.result.result);
-	let keys = Object.keys(r);
-	let values = Object.values(r);
+export const OutputHandler = function(props) {
 
-	let element = <li>Nothing hier.</li>;
-
-	for (var i = keys.length - 1; i >= 0; i--) {
-		element = <li>{keys[i]}: <span>{values[i]}</span></li>;
+	if (props.result.length === 0) {
+		return (
+			<div>
+				<h1>Please insert TV model number into input.</h1>
+				<p>Example: UE55F8000AFXZ</p>
+			</div>
+		);
 	}
 
-	console.log(element);
-
-	return element;
-	
-};
-
-export const OutputHandler = function(props) {
+	var r = getVendorInformations(props.vendor, props.result);
+	const o = Object.keys(r).map( (k) => <li key={k}>{k}: <span className="value">{r[k]}</span></li>);
 
 	return (
 		<ul>
-			<h1>{ props.vendor }</h1>
-
-			<Item result={props} />
-
+			<h1>{ props.manufactor }</h1>
+			{ o }
 		</ul>
 	);
 }
