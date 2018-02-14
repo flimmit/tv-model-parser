@@ -56,6 +56,7 @@ class Input extends Component {
 					onChange={ this.onInputValueChanged}
 					value={this.state.input}
 				/>
+				
 
 				<OutputHandler 	manufactor= { this.state.vendor.manufactor } 
 								vendor= { this.state.vendor.vendor } 

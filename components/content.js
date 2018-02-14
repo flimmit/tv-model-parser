@@ -30,7 +30,7 @@ export const OutputHandler = function(props) {
 	if (props.result.length === 0) {
 		return (
 			<div>
-				<h1>Please insert TV model number into input.</h1>
+				<h2>Please insert TV model number into input.</h2>
 				<p>Example: UE55F8000AFXZ</p>
 			</div>
 		);
@@ -40,9 +40,9 @@ export const OutputHandler = function(props) {
 	const o = Object.keys(r).map( (k) => <li key={k}>{k}: <span className="value">{r[k]}</span></li>);
 
 	return (
-		<ul>
-			<h1>{ props.manufactor }</h1>
-			{ o }
-		</ul>
+		<div>
+			<h2>{ props.manufactor }</h2>
+			<ul>	{ o } </ul>
+		</div>
 	);
 }
